@@ -1,0 +1,13 @@
+---
+- name: Test Docker Container Management
+  hosts: local
+  gather_facts: false
+
+  tasks:
+    - name: Ensure Nginx container is running
+      community.docker.docker_container:
+        name: my-test-webserver
+        image: nginx:alpine
+        state: started
+        ports:
+          - "8080:80"
